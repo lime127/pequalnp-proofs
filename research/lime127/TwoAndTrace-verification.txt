@@ -1,0 +1,22 @@
+TwoAndTrace local kernel verification
+Date (UTC): 2026-11-25T06:07:53.3698025Z
+Lean toolchain: leanprover/lean4:v4.36.0
+Source: lean/PEqualNP/Research/TwoAndTrace.lean
+SHA256: 9c326fef6613e4269931bd0ab3c31dd6c91639cabb7e96b540d616490baba44c
+Command: lean lean/PEqualNP/Research/TwoAndTrace.lean
+Exit code: 0
+Final check elapsed: 3.07 seconds (single Lean thread)
+Import: Std only. No Mathlib download/build required.
+
+Axiom output:
+'PEqualNP.Research.TwoAndTrace.forcedSharing' does not depend on any axioms
+'PEqualNP.Research.TwoAndTrace.bothAndsClean' depends on axioms: [propext]
+
+The finite trace implication is proved using kernel-evaluated decide. The
+final source uses neither bv_decide, native_decide, sorry, nor new axioms.
+An independent read-only review checked the trace recurrences against
+PEqualNP.Defs.ReadK.linearParts and the theorem's scope.
+
+Scope: the two-AND Boolean/trace normal form only. The arbitrary-Circuit
+normalization bridge and the global CHILD2 65-gate lower bound are NOT proved.
+This is a research artifact, not an official accepted desk task or profile credit.
