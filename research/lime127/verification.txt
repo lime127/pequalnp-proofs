@@ -1,0 +1,14 @@
+Local Lean verification of published research artifacts
+Checked at UTC: 2026-11-25T04:11:24.5954713Z
+Base revision: cc5bff61fdb650a4ecd82694aeffa0f790a01a60
+Toolchain: leanprover/lean4:v4.36.0
+
+Source: Mask4974Upper.lean
+SHA256: 971f5804666731076fbbf70d49e35bc35217994e8d28cee3e4bd6d94f53fd618
+Exit code: 0
+'Lime127.Research.Mask4974.upper' depends on axioms: [propext]
+
+Source: NoSmallCoverCounterexample.lean
+SHA256: aed88d20c920fb56848a41c52a73f28b73a19b76adae2e00ac0a1a0255f006b8
+Exit code: 0
+'Lime127.Research.noSmallCoverCounterexample' depends on axioms: [propext, Classical.choice, Quot.sound]
