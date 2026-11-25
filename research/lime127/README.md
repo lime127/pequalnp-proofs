@@ -6,6 +6,7 @@ These are checked partial and derived results from the P vs NP project work. The
 
 | File | What it proves | Scope and attribution |
 | --- | --- | --- |
+| [ORFrontier.lean](../../lean/PEqualNP/Research/ORFrontier.lean) | OR expansion preserves actual circuit values and the zero-occurrence and single-occurrence evaluator components; atoms are inputs or AND outputs in AND/OR circuits. | Checked bridge infrastructure. Requires backward inputs and an in-range wire. Retains AND identities; does not establish the full two-AND representation or the 65-gate bound. |
 | [TwoAndTrace.lean](../../lean/PEqualNP/Research/TwoAndTrace.lean) | `forcedSharing` and `bothAndsClean`: a bad pair trace forces sharing and cleanliness of both ANDs in a specified two-AND normal form. | A small supporting algebraic lemma for CHILD 2. Does not prove the arbitrary-circuit normalization, the general three-AND corollary, or the 65-gate lower bound. |
 | [LineSingleBridge.lean](../../lean/PEqualNP/Research/LineSingleBridge.lean) | `PEqualNP.Research.LineSingleBridge`: the exact first child of reduction `R_meta_2071_587`. | A complete generic bridge from the project linear-parts evaluator to the specified derivative recurrence. Adapted from the generic trace argument in upstream `R_meta_2071_926`; no structural plane assumption is used. |
 | [Mask4974Upper.lean](Mask4974Upper.lean) | `Lime127.Research.Mask4974.upper`: the 4-by-4 table encoded by mask 4974 has representation size at most 9. | An explicit nine-gate AND/OR circuit, checked on the 16 inputs selecting exactly one row and one column. Behavior on other inputs is not specified. This does not prove that eight gates are impossible. |
@@ -68,3 +69,14 @@ lake env lean PEqualNP/Research/TwoAndTrace.lean
 ```
 
 The missing Circuit-to-normal-form proof is explicitly outside this artifact. Therefore this file does not yet establish the general statement that dirty-AND counterexamples need at least three AND gates, and it does not finish CHILD 2.
+
+## OR-frontier bridge infrastructure
+
+[ORFrontier.lean](../../lean/PEqualNP/Research/ORFrontier.lean) expands OR gates into lists of input and non-OR gate wires, preserving each AND gate's identity. It proves that this expansion preserves the actual `Circuit.wires` value and both components of `ReadK.linearParts`, for every valid in-range wire. The predicate `isLine` is arbitrary: its zero-occurrence and single-occurrence parts are preserved together. Point and line single-read coefficients use separate instantiations of that predicate. A separate theorem restricts the retained atoms to inputs and AND outputs when all gates are AND/OR.
+
+This supplies the evaluator and support invariants needed for a two-AND representation proof. That representation, its connection to `TwoAndTrace`, and the global 65-gate lower bound remain unfinished. The generic append-only evaluator arguments are adapted from existing project proofs with attribution in the file. The checked results use only `propext`, `Classical.choice`, and `Quot.sound`; see [verification](ORFrontier-verification.txt).
+
+```sh
+cd lean
+lake env lean PEqualNP/Research/ORFrontier.lean
+```

@@ -1,0 +1,28 @@
+ORFrontier local kernel verification
+Date (UTC): 2026-11-25T06:19:57.4248041Z
+Lean toolchain: leanprover/lean4:v4.36.0
+Source: lean/PEqualNP/Research/ORFrontier.lean
+SHA256: 54eea956e3fd784c6179f0e6c901c60964cf9b294c20027b59c35146eef87ffd
+Command (from lean/): lake env lean PEqualNP/Research/ORFrontier.lean
+Exit code: 0
+Final check elapsed: 7.54 seconds; LEAN_NUM_THREADS=1
+Imports: PEqualNP.Defs.ReadK (cached project dependencies)
+
+#print axioms reports only [propext, Classical.choice, Quot.sound] for:
+- PEqualNP.Research.ORFrontier.atom_support
+- PEqualNP.Research.ORFrontier.atom_support_ao
+- PEqualNP.Research.ORFrontier.value_eq_frontier
+- PEqualNP.Research.ORFrontier.parts_eq_frontier
+
+No sorry, native_decide, new axioms, or brute-force circuit search is used.
+The source acknowledges the existing append-only evaluator proof pattern.
+This is a local Lean check, not an authoritative pequalnp desk verdict.
+
+Scope: for backward-reading circuits and in-range wires, OR-frontier expansion
+preserves actual Circuit.wires values and both ReadK.linearParts components.
+In AND/OR circuits every retained atom is an original input or an AND output.
+The isLine predicate is arbitrary and no AND wire is contracted.
+The full two-AND representation bridge, arbitrary-Circuit three-AND bound,
+and global CHILD2 65-gate bound are NOT proved in this artifact.
+
+Independent read-only review: no semantic or scope findings; reviewed source hash matches the hash above. No duplicate Lean build was run for review.
